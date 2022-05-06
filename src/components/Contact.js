@@ -4,19 +4,22 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-
-import Send from "@material-ui/icons/Send";
+import EmailIcon from "@mui/icons-material/Email";
+import { FaGithub } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { AiTwotoneMail } from "react-icons/ai";
 
 const useStyles = makeStyles((theme) => ({
   contactContainer: {
     background: "#233",
-    height: "100vh",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    position: "absolute",
   },
   heading: {
     color: "tomato",
     textAlign: "center",
-    textTransform: "uppercase",
     marginBottom: "1rem",
   },
   form: {
@@ -27,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     color: "#fff",
+    marginBottom: "1rem",
+    marginLeft: "1rem",
   },
   button: {
     marginTop: "1rem",
@@ -38,68 +43,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InputField = withStyles({
-  root: {
-    "& label.Mui-focused": {
-      color: "tomato",
-    },
-    "& label": {
-      color: "tan",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "tan",
-      },
-      "&:hover fieldset": {
-        borderColor: "tan",
-      },
-      "&.Mui-focused fieldset": {
-        color: "#fff",
-        borderColor: "tan",
-      },
-    },
-  },
-})(TextField);
-
 const Contact = () => {
   const classes = useStyles();
   return (
     <Box component="div" className={classes.contactContainer}>
       <Grid container justify="center">
-        <Box component="form" className={classes.form}>
-          <Typography variant="h5" className={classes.heading}>
-            Hire or Contact me...
-          </Typography>
-          <InputField
-            fullWidth={true}
-            label="Name"
-            variant="outlined"
-            inputProps={{ className: classes.input }}
-          />
-          <InputField
-            fullWidth={true}
-            label="Email"
-            variant="outlined"
-            inputProps={{ className: classes.input }}
-            className={classes.field}
-          />
-          <InputField
-            fullWidth={true}
-            label="Message"
-            variant="outlined"
-            multiline
-            rows={4}
-            inputProps={{ className: classes.input }}
-          />
-          <Button
-            variant="outlined"
-            fullWidth={true}
-            endIcon={<Send />}
-            className={classes.button}
-          >
-            Contact Me
-          </Button>
-        </Box>
+        <Typography variant="h4" className={classes.heading}>
+          Please Contact Me For a Copy of My Resume or for any Further Inquiries
+        </Typography>
+      </Grid>
+      <Grid container justify="center">
+      <IconContext.Provider
+          value={{ color: "orange", size: "2em", marginRight: "1em", className: "global-class-name" }}
+        >
+          <div>
+            <AiTwotoneMail />
+          </div>
+        </IconContext.Provider>
+        <Typography variant="h5" className={classes.input}>
+          <a href="mailto:michaelross27@gmail.com">Email Me Here</a>
+        </Typography>
+      </Grid>
+      <Grid container justify="center">
+        <IconContext.Provider
+          value={{ color: "orange", size: "2em", marginRight: "1em", className: "global-class-name" }}
+        >
+          <div>
+            <FaGithub />
+          </div>
+        </IconContext.Provider>
+        <Typography variant="h5" className={classes.input}>
+        Click <a href="https://github.com/michaelross27">Here</a> to Access my
+          Github Page
+        </Typography>
       </Grid>
     </Box>
   );

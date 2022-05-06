@@ -16,25 +16,13 @@ import _ from "lodash";
 import {
   FloatingActionButtonContainer,
   FloatingButtonSpacer,
-} from "../features/styled-components";
-import { useActions } from "../redux/useActions";
-import UserTable from "./UserTable";
+} from "./features/styled-components";
+import UserTable from "./components/UserTable";
 
 const UserCrud = ({ open, onClose }) => {
   const dispatch = useDispatch();
-  /* const navigate = useNavigate(); */
   const [openForm, setOpenForm] = React.useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const {
-    deleteUser,
-    loadUsers,
-    updateUser,
-    addUser,
-    setUserDetails,
-    cleanUserDetails,
-    cleanUser,
-    logout,
-  } = useActions();
   const handleClose = () => {
     onClose();
   };
@@ -49,14 +37,6 @@ const UserCrud = ({ open, onClose }) => {
     },
   };
   const actions = {
-    submit: (formValues) => {
-      form.close();
-      if (isEditing) {
-        updateUser(formValues);
-      } else {
-        addUser(formValues);
-      }
-    },
     create: () => {
       setIsEditing(false);
       dispatch(initialize("userForm", {}));
@@ -67,27 +47,8 @@ const UserCrud = ({ open, onClose }) => {
       dispatch(initialize("userForm", user));
       form.open();
     },
-    view: {
-      open: (user) => {
-        setUserDetails(user);
-      },
-      close: () => cleanUserDetails(),
-    },
-    delete: (userIds) => {
-      deleteUser(userIds);
-    },
   };
 
-  useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      loadUsers();
-    }
-    return () => {
-      mounted = false;
-      cleanUser();
-    };
-  }, [loadUsers, cleanUser]);
 
   return (
     <Dialog onClose={handleClose} open={open}>

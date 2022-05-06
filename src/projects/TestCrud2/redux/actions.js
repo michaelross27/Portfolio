@@ -1,7 +1,6 @@
 import * as types from "./actionType";
-import https from "./contactApi";
+import fetchUsers from "./contactApi";
 import { formValues, reset } from "redux-form";
-import { accessManagement as iam } from "../utils/accessManagement";
 
 const getUsers = (users) => ({
   type: types.GET_USERS,
@@ -34,7 +33,7 @@ const getUser = (user) => ({
 
 export const loadUsers = () => async (dispatch) => {
   try {
-    const response = await https.get("/users");
+    const response = await fetchUsers.get("/users");
     const contacts = response.data;
         /* contacts.reverse(); */
 
@@ -46,7 +45,7 @@ export const loadUsers = () => async (dispatch) => {
 
 export const deleteUser = (userIds) => async (dispatch) => {
   try {
-    await https.delete("/deleteEmails", {
+    await fetchUsers.delete("/deleteEmails", {
       data: userIds,
     }); 
     dispatch(userDeleted(userIds));
@@ -59,13 +58,13 @@ export const deleteUser = (userIds) => async (dispatch) => {
 export const addUser = (formValues) => async (dispatch) => {
   dispatch(reset("addUser"));
   try {
-    await https.post("/emailUpload", [
+    await fetchUsers.post("/emailUpload", [
         {
             ...formValues,
             listId: 480,
         },
     ]);
-    await https.get("/users");
+    await fetchUsers.get("/users");
     dispatch(userAdded());
         dispatch(loadUsers());
     } catch (error) {
@@ -75,7 +74,7 @@ export const addUser = (formValues) => async (dispatch) => {
 
 export const updateUser = (formValues) => async (dispatch) => {
   try {
-    await https.put(
+    await fetchUsers.put(
       "/updateEmail",
       formValues
     );
@@ -85,13 +84,3 @@ export const updateUser = (formValues) => async (dispatch) => {
     console.log(error);
   }
 };
-
-export const setUserDetails = (user) => (dispatch) =>
-    dispatch({ type: types.SET_USER_DETAILS, payload: user });
-
-export const cleanUserDetails = () => (dispatch) =>
-    dispatch({ type: types.CLEAN_USER_DETAILS });
-
-export const cleanUser = () => (dispatch) =>
-    dispatch({ type: types.CLEAN_USER });
-

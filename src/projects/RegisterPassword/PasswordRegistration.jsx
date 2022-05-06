@@ -2,25 +2,33 @@ import React, { useState } from "react";
 import { Grid, Button, IconButton } from "@material-ui/core";
 import { Field, reduxForm } from "redux-form";
 import { Visibility, VisibilityOff, Lock } from "@mui/icons-material";
-import CustomReduxField from "../src/components/CustomReduxField";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+} from "@mui/material";
+import CustomReduxField from "./src/components/CustomReduxField";
 import PasswordStrengthMeter from "./PasswordStrengthMeter";
 import "./styles/PasswordStrengthMeter.css";
 
-const PasswordRegistration = (props) => {
-  const [password, setPassword] = useState("");
-  const onSubmitPassword = (formValues) => {
-    props.onSubmit(formValues);
+const PasswordRegistration = ({ open, onClose }) => {
+  const handleClose = () => {
+    onClose();
   };
+  const [password, setPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
   const handleShowPassword2 = () => setShowPassword2(!showPassword2);
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Register Password</DialogTitle>
+    <Dialog onClose={handleClose} open={open}>
+      <DialogTitle>Password Registration</DialogTitle>
       <Divider />
-      <form onSubmit={onSubmitPassword} autoComplete="off">
-        <DialogContent>
+      <DialogContent>
+        <form autoComplete="off">
           <Grid container spacing={3}>
             <Grid item xs={11}>
               <Field
@@ -54,43 +62,13 @@ const PasswordRegistration = (props) => {
                 {showPassword2 ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </Grid>
-            <Grid item xs={12}>
-              <Button
-                type="submit"
-                onClick={props.handleSubmit(onSubmitPassword)}
-                variant="contained"
-                color="primary"
-                fullWidth
-              >
-                Register Password
-              </Button>
-            </Grid>
           </Grid>
-        </DialogContent>
-        <Divider />
-        <DialogActions>
-          <div className={classes.actions}>
-            {" "}
-            <Button
-              style={{ width: "100px" }}
-              color="primary"
-              variant="contained"
-              type="submit"
-              onClick={props.handleSubmit(onSubmit)}
-            >
-              Submit
-            </Button>
-            <Button
-              color="secondary"
-              variant="contained"
-              type="submit"
-              onClick={onClose}
-            >
-              Close
-            </Button>
-          </div>
-        </DialogActions>
-      </form>
+        </form>
+      </DialogContent>
+      <Divider />
+      <DialogActions>
+        <Button onClick={handleClose}>Close</Button>
+      </DialogActions>
     </Dialog>
   );
 };

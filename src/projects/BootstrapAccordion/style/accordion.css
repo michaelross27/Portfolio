@@ -1,0 +1,9 @@
+.Accordion.Header {
+    background-color: #292b2cb7;
+    color: white
+  }
+  
+  .Accordion.Body {
+    background-color: rgb(100, 100, 100);
+    color: white;
+  }

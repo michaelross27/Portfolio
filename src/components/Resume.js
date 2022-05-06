@@ -121,7 +121,7 @@ const Resume = () => {
           variant="h2"
           className={`${classes.timeLineYear} ${classes.timeLineItem}`}
         >
-          2013
+          2022
         </Typography>
         <Box component="div" className={classes.timeLineItem}>
           <Typography
@@ -129,10 +129,10 @@ const Resume = () => {
             align="center"
             className={classes.subHeading}
           >
-            web design
+            Web Design Intern
           </Typography>
           <Typography variant="body1" align="center" className={classes.body1}>
-            company name where worked
+            Reesby, Inc.
           </Typography>
           <Typography
             variant="subtitle1"
@@ -149,7 +149,7 @@ const Resume = () => {
           variant="h2"
           className={`${classes.timeLineYear} ${classes.timeLineItem}`}
         >
-          2014
+          2021
         </Typography>
         <Box component="div" className={classes.timeLineItem}>
           <Typography
@@ -157,10 +157,10 @@ const Resume = () => {
             align="center"
             className={classes.subHeading}
           >
-            html & css
+            Full Stack Web Design
           </Typography>
           <Typography variant="body1" align="center" className={classes.body1}>
-            company name where worked
+            Nucamp Coding Bootcamp
           </Typography>
           <Typography
             variant="subtitle1"
@@ -177,7 +177,7 @@ const Resume = () => {
           variant="h2"
           className={`${classes.timeLineYear} ${classes.timeLineItem}`}
         >
-          2015
+          2019-2021
         </Typography>
         <Box component="div" className={classes.timeLineItem}>
           <Typography
@@ -185,10 +185,10 @@ const Resume = () => {
             align="center"
             className={classes.subHeading}
           >
-            Fullstack Javascript
+            Member Experience Professional
           </Typography>
           <Typography variant="body1" align="center" className={classes.body1}>
-            company name where worked
+            Picatinny Federal Credit Union
           </Typography>
           <Typography
             variant="subtitle1"
@@ -205,7 +205,7 @@ const Resume = () => {
           variant="h2"
           className={`${classes.timeLineYear} ${classes.timeLineItem}`}
         >
-          2017
+          2017-2018
         </Typography>
         <Box component="div" className={classes.timeLineItem}>
           <Typography
@@ -213,10 +213,38 @@ const Resume = () => {
             align="center"
             className={classes.subHeading}
           >
-            Django & React
+            Business Research Analyst
           </Typography>
           <Typography variant="body1" align="center" className={classes.body1}>
-            company name where worked
+            Blue Sky Data Co.
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            className={classes.subtitle1}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quas
+            ipsa, laudantium totam perferendis possimus voluptatibus tenetur.
+            Quasi voluptatibus, nam vitae eaque ad, officia laboriosam
+            repudiandae, rerum necessitatibus nisi mollitia.
+          </Typography>
+        </Box>
+        <Typography
+          variant="h2"
+          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+        >
+          2016-2017
+        </Typography>
+        <Box component="div" className={classes.timeLineItem}>
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.subHeading}
+          >
+            Credit Analyst
+          </Typography>
+          <Typography variant="body1" align="center" className={classes.body1}>
+            American Financial Resources
           </Typography>
           <Typography
             variant="subtitle1"
